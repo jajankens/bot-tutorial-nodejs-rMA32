@@ -9,7 +9,7 @@ function respond() {
       botRegexAd=/^\/advance/;botRegexGTA = /^\/gta/; botRegexSC = /^\/SDL/i; botODB = /(.*\s+)(.*odb)(\s+.*)/i; botDuck = /^\/duck/;
       botRegexP = /^\/PDL/i;  botRegexTw = /^\/twitch/i; botRegexSb = /^\/sub/; botRegexSh = /^\/shrug/; botRegexWk = /^\/users/; botRegexCC = /^\/cc/;
       botRegexSiege = /^\/siege/; botRegexOW = /^\/ratings/; 
-      botRegexSlut = /^\/slut/; botRegexStop = /^\/stop/;
+      botRegexSlut = /^\/slut/; botRegexStop = /^\/stop/; botRegexStandings = /^\/standings/;
       botRegexProp = /^\/prop/;botRegexKys = /^\/kys/; botRegexSlam = /^\/slam/; botRegexBrye = /^\/brye/;
       botRegexGian = /^\/gian/; botRegexScrotes = /^\/scrotes/; botRegexShaki = /^\/shaki/; botRegexHype = /^\/hype/;
       botRegexDaf = /^\/dafuq/; botRegexMA32 = /^\/pending/; botRegexTrade = /^\/trade/; botRegexShady = /^\/shady/;
@@ -84,12 +84,16 @@ function respond() {
     postMessage("http://daddyleagues.com/rcfm/team/"+request.text.substring(5,8)+"/depthchart");
     this.res.end();
   } 
-  
+  else if(request.text && botRegexStandings.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("http://daddyleagues.com/rcfm/standings/league");
+    this.res.end();
+  }
   else if(request.text && botRegexOW.test(request.text)) {
     this.res.writeHead(200);
     postMessage("www.daddyleagues.com/rcfm/maddenrating/");
     this.res.end();
-  } 
+  }
   else if(request.text && botRegexSalt.test(request.text)) {
     this.res.writeHead(200);
     postMessage("https://i.imgur.com/B5BSVqH.png");
