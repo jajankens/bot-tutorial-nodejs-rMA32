@@ -172,7 +172,7 @@ function respond() {
   }
   else if(request.text && botRegexTrade.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("https://docs.google.com/forms/d/e/1FAIpQLSdrbe5iBRaBC7EWoodVm8z6285-dG2EdHXAOMOgz8md8T1jwQ/viewform");
+    postMessage("https://docs.google.com/spreadsheets/d/18nlWq3VPElP5VvuK-W5XslQB1uHwph63HRjjZYr_99o/edit#gid=1859378702");
     this.res.end();
   }
   
