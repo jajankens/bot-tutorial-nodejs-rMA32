@@ -176,7 +176,7 @@ function respond() {
   }
   else if(request.text && botRegexTrade.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("https://docs.google.com/spreadsheets/d/18nlWq3VPElP5VvuK-W5XslQB1uHwph63HRjjZYr_99o/edit#gid=1859378702");
+    postMessage("https://docs.google.com/spreadsheets/d/1IHU40e5cENegADwlVOTuZilNCgYlAIKBQ4hv4wW1MhA/edit#gid=0");
     this.res.end();
   }
   
