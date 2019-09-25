@@ -13,6 +13,7 @@ function respond() {
       botRegexProp = /^\/prop/;botRegexKys = /^\/kys/; botRegexSlam = /^\/slam/; botRegexBrye = /^\/brye/;
       botRegexGian = /^\/gian/; botRegexScrotes = /^\/scrotes/; botRegexShaki = /^\/shaki/; botRegexHype = /^\/hype/;
       botRegexDaf = /^\/dafuq/; botRegexMA32 = /^\/pending/; botRegexTrade = /^\/trade/; botRegexShady = /^\/shady/;
+      botRegex4thDown = /^\/4thdown/; botRegexStatCap = /^\/statcap/;
       siege1 = 'https://i.groupme.com/350x419.png.adc8c73a6c1547e0a9e04320296329f8'; siege2 = 'https://i.groupme.com/1279x752.jpeg.aa5d0401e0df495bba4b4e09dc5a6bd7'
       siege3 = 'https://i.groupme.com/960x960.png.006e180e05d841c6a2962e844bf1e6fd';
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
@@ -133,7 +134,31 @@ function respond() {
     
     this.res.end();
   }  
-
+  
+   else if(request.text && botRegex4thDown.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("- If you are on or past your opponents 35 yard line, and it is 4th & 2 or below, you may go for it
+- If you are up by 14 or more points you are not allowed to go for it This applies during any point of the match.
+- If you are losing by 14 or more points during the 3rd quarter you may go for it.
+- If you are losing by 3 or more points in the 4th quarter you may go for it. The down and distance does not matter in this situation.
+- If you are tied in the final two minutes of the 4th quarter you may go for it. The scenario must be sim related... just ask yourself if an NFL team would do it.
+- You are allowed one coaches decision a game. Any score, any quarter, regardless of field position.
+- You can attempt to convert a 4th down anywhere on the field, only if that conversion and new set of downs will allow you to run the game clock to 0:00 in the 4th quarter.");
+    this.res.end();
+  } 
+  
+  else if(request.text && botRegexStatCap.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("For a single player, do not exceed:
+224 yards rushing
+224 yards receiving
+500 yards passing
+4 rushing TDs
+4 receiving TDs
+5 passing TDs
+5 sacks");
+    this.res.end();
+    
   else if(request.text && botRegexTw.test(request.text)) {
     this.res.writeHead(200);
     postMessage("http://www.twitch.tv/"+request.text.substring(8,request.text.length));
