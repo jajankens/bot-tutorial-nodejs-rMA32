@@ -15,7 +15,10 @@ function respond() {
       botRegexDaf = /^\/dafuq/; botRegexMA32 = /^\/pending/; botRegexTrade = /^\/trade/; botRegexShady = /^\/shady/;
       botRegex4thDown = /^\/4thdown/; botRegexStatCap = /^\/statcap/;
       botRegexSchedule = /^\/schedule/;
-      botRegexBitch = /^\/bitch/; botRegexGame = /^\/game/;
+      botRegexMulti = /^\/mstream/i;
+      botRegexHelp = /^\/help/;
+      
+      botRegexBitch = /^\/bitch/; botRegexGame = /^\/game/; botRegexBG = /^\/bg/; botRegexClown = /^\/clowning/; botRegexNoVance = /^\/novance/;
       siege1 = 'https://i.groupme.com/350x419.png.adc8c73a6c1547e0a9e04320296329f8'; siege2 = 'https://i.groupme.com/1279x752.jpeg.aa5d0401e0df495bba4b4e09dc5a6bd7'
       siege3 = 'https://i.groupme.com/960x960.png.006e180e05d841c6a2962e844bf1e6fd';
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
@@ -27,11 +30,31 @@ function respond() {
     this.res.end();
   }
   
+  else if(request.text && botRegexHelp.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("HELP MENU\n ----DL Commands----\n -To view a specific team's schedule:\n/sdl [team abbreviation]\n -To view a specific team's depth chart:\n/ddl [team abbreviation]\n -To view the league's weekly schedule:\n /schedule\n -To view the league's current standings:\n /standings\n -To view a player or players based on name:\n /pdl [name]\n ----Trades/POS Changes/Suspensions----\n -To view trades, position changes, and suspensions:\n /trades\n ----Rules----\n -To view all rules\n /Rules\n -To view statcaps ad hoc:\n /statcap\n -To view 4th down rules ad hoc:\n /4thdown\n ----STREAMS----\n -To post a singular stream:\n/twitch [username] [short description optional]\n -To post multiple streams at once (platform doesn't matter):\n /mstream [username]/[username]\n NOTE: '/' between usernames is REQUIRED.\n ----FOR FUN----\n Just try them out:\n /duck\n /salt\n /game\n /bg\n /clowning\n /bitch");
+    this.res.end();
+  } 
+  
    else if(request.text && botRegexSchedule.test(request.text)) {
     this.res.writeHead(200);
     postMessage("http://daddyleagues.com/rcfm/schedules");
     this.res.end();
   } 
+  
+   else if(request.text && botRegexMulti.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://multistre.am/"+request.text.substring(9,request.text.length)+"/layout4/");
+    this.res.end();
+  } 
+  
+  else if(request.text && botRegexClown.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://www.theclownschool.com/online-classes");
+    this.res.end();
+  } 
+  
+  
   
   else if(request.text && botRegexOh.test(request.text)) {
     this.res.writeHead(200);
@@ -139,8 +162,7 @@ function respond() {
     this.res.writeHead(200);
     var req = request.text.substring(5,request.text.length);
     var rep = req.replace(/ /,"+");
-    postMessage("http://daddyleagues.com/rcfm/players/");
-    
+    postMessage("http://daddyleagues.com/rcfm/players?name="+rep+"&position=all&team=all");
     this.res.end();
   }  
   
@@ -164,13 +186,25 @@ function respond() {
 
    else if(request.text && botRegexGame.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("https://media0.giphy.com/media/xd2XRuwrQwY0M/giphy.gif?cid=790b7611e4d287029db9ed0d581650787818d2190a29fbbf&rid=giphy.gif");
+    postMessage("http://giphygifs.s3.amazonaws.com/media/d9ltR6odFmQsE/giphy.gif");
     this.res.end();
   }  
+  
+   else if(request.text && botRegexNoVance.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://media0.giphy.com/media/26uf82TQ93IGhfasU/giphy.gif");
+    this.res.end();
+  } 
   
   else if(request.text && botRegexTw.test(request.text)) {
     this.res.writeHead(200);
     postMessage("http://www.twitch.tv/"+request.text.substring(8,request.text.length));
+    this.res.end();
+  } 
+  
+  else if(request.text && botRegexBG.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://i.kym-cdn.com/photos/images/original/000/802/696/6c6.jpg")
     this.res.end();
   } 
   
